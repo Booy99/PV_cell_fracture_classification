@@ -2,7 +2,9 @@
 Computer Vision on The Edge: Micro-Fracture Classification in Photovoltaic Cells in Constrained Environments
 
 **Splitting_data.ipynb:** Creates eight different datasets based on the original 2,624 images.
+
 **Augmentation_Pytorch.ipynb:** Augments selected datasets either for feeding directly into a model for training or to save images in a file.
+
 **Augmentation_Tensorflow.ipynb:** Augments images for feeding directly into a model for training.
 **EDA.ipynb:** Exploratory data analysis for the collected data.
 **Results_EDA.ipynb:** Exploratory data analysis for the results from training 72 models on the HPC.
