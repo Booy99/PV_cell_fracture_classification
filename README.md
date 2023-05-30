@@ -22,3 +22,5 @@ This repository consists of datasets and Jupyter Notebooks that accompany the MS
 **Evaluate_models.ipynb:** Run inference on all models.
 
 **Quantization-ipynb:** Quantize all models using different quantization techniques and evaluate model performance after quantization.
+
+The data has been collected from https://github.com/zae-bayern/elpv-dataset.
