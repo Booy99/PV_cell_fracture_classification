@@ -1,6 +1,8 @@
 # PV_cell_fracture_classification
 Computer Vision on The Edge: Micro-Fracture Classification in Photovoltaic Cells in Constrained Environments
 
+This repository consists of datasets and Jupyter Notebooks that accompany the MSc. Thesis in Software Design at the IT University of Copenhagen, completed by Booy Faassen on 1st of June, 2023.
+
 **Splitting_data.ipynb:** Creates eight different datasets based on the original 2,624 images.
 
 **Augmentation_Pytorch.ipynb:** Augments selected datasets either for feeding directly into a model for training or to save images in a file.
