@@ -2,11 +2,11 @@
 
 import sensor, image, time, os, tf, uos, gc
 
-sensor.reset()                         # Reset and initialize the sensor.
-sensor.set_pixformat(sensor.RGB565)    # Set pixel format to RGB565 (or GRAYSCALE)
-sensor.set_framesize(sensor.QVGA)      # Set frame size to QVGA (320x240)
-sensor.set_windowing((240, 240))       # Set 240x240 window.
-sensor.skip_frames(time=2000)          # Let the camera adjust.
+#sensor.reset()                         # Reset and initialize the sensor.
+#sensor.set_pixformat(sensor.RGB565)    # Set pixel format to RGB565 (or GRAYSCALE)
+#sensor.set_framesize(sensor.QVGA)      # Set frame size to QVGA (320x240)
+#sensor.set_windowing((240, 240))       # Set 240x240 window.
+#sensor.skip_frames(time=2000)          # Let the camera adjust.
 
 net = None
 labels = None
@@ -23,20 +23,25 @@ try:
 except Exception as e:
     raise Exception('Failed to load "labels.txt", did you copy the .tflite and labels.txt file onto the mass-storage device? (' + str(e) + ')')
 
+
+print(net.ram())
+print(net.len())
+print(net.run())
+
 clock = time.clock()
+
+"""
 while(True):
     clock.tick()
 
-    img = sensor.snapshot()
+    print("test")
+    img = image.Image("cell0039.PNG")
 
-    # default settings just do one detection... change them to search the image...
-    for obj in net.classify(img, min_scale=1.0, scale_mul=0.8, x_overlap=0.5, y_overlap=0.5):
-        print("**********\nPredictions at [x=%d,y=%d,w=%d,h=%d]" % obj.rect())
-        img.draw_rectangle(obj.rect())
+    for obj in tf.classify(net, img):
         # This combines the labels and confidence values into a list of tuples
-        predictions_list = list(zip(labels, obj.output()))
-
-        for i in range(len(predictions_list)):
-            print("%s = %f" % (predictions_list[i][0], predictions_list[i][1]))
-
+        # and then sorts that list by the confidence values.
+        sorted_list = sorted(zip(labels, obj.output()), key = lambda x: x[1], reverse = True)
+        for i in range(2):
+            print("%s = %f" % (sorted_list[i][0], sorted_list[i][1]))
     print(clock.fps(), "fps")
+"""
